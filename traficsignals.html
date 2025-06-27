@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Light</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .traffic-light {
+            width: 100px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .light {
+            width: 60px;
+            height: 60px;
+            margin: 15px auto;
+            border-radius: 50%;
+            background-color: #111;
+            transition: background-color 0.5s;
+        }
+
+        .red.on {
+            background-color: red;
+        }
+
+        .yellow.on {
+            background-color: yellow;
+        }
+
+        .green.on {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="traffic-light">
+        <div class="light red" id="red"></div>
+        <div class="light yellow" id="yellow"></div>
+        <div class="light green" id="green"></div>
+    </div>
+
+    <script>
+        const lights = ['red', 'yellow', 'green'];
+        let index = 0;
+
+        function changeLight() {
+            lights.forEach((light, i) => {
+                document.getElementById(light).classList.remove('on');
+            });
+            document.getElementById(lights[index]).classList.add('on');
+
+            index = (index + 1) % lights.length;
+        }
+        changeLight();
+        setInterval(changeLight, 2000); 
+    </script>
+</body>
+</html>
